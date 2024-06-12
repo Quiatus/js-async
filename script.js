@@ -86,3 +86,38 @@ btn.addEventListener('click', () => {
     btn.textContent = 'Loading...'
     getCountryData('netherlands')
 })
+
+// console.log('test start')  // 1.
+// setTimeout(() => console.log('0 sec timer'), 0)  // 5.
+// Promise.resolve('resolved promise 1').then(res => console.log(res)) // 3.
+// Promise.resolve('resolved promise 2').then(res => {  // 4.
+//     for (let i = 0; i < 1000000000; i++) {}
+//     console.log(res)
+// })
+
+// console.log('test end') // 2.
+
+
+// Create a new promise
+
+// const lot = new Promise((resolve, reject) => {
+//     console.log('Draw...')
+//     setTimeout(() => Math.random() >= 0.5 ? resolve('You won!') : reject(new Error ('You lost!')), 2000)
+// })
+
+// lot.then(res => console.log(res)).catch(err => console.error(err))
+
+// promisifying (convert callback async to promise)
+
+// const wait = (sec) => new Promise((res) => setTimeout(() => res(`${sec} sec`), sec * 1000))
+
+// wait(2).then((res) => {
+//     console.log(res)
+//     return wait(1)
+// }).then((res) => console.log(res))
+
+
+
+// const getPosition = () => new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject))
+
+// getPosition().then(pos => console.log(pos))
