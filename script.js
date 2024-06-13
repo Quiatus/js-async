@@ -121,3 +121,36 @@ btn.addEventListener('click', () => {
 // const getPosition = () => new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject))
 
 // getPosition().then(pos => console.log(pos))
+
+// async / await
+
+const whereAmI = async (country) => {
+    try {
+        const res = await fetch(url + country)
+        const data = await res.json()
+        //return data[0].population
+        return data
+    } catch (err) {
+    }
+}
+
+// getting data from async function
+
+// whereAmI('netherslands').then(pop => pop ? console.log(pop) : null).catch(err => err).finally(() => console.log('Done!'))
+
+(async () => {
+    console.log('Retrieving population data...')
+    try {
+        // const popNl = await whereAmI('netherlands')
+        // const popSk = await whereAmI('slovakia')
+        // const popDe = await whereAmI('germany')
+
+        // parallel promises
+        const data = await Promise.all([whereAmI('netherlands'), whereAmI('slovakia'), whereAmI('germany')])//.then(res => console.log(res))
+        console.log(data.map(data => data[0].population))
+        //console.log([popNl, popSk, popDe])
+    } catch(err) {
+        console.error(err)
+    }
+    console.log('Done!')
+})()
